@@ -8,7 +8,9 @@ const Navbar = ({ setCurrentView, introduceStoreRef, footerRef }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [closing, setClosing] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const menuRef = useRef(null);
+  const modalRef = useRef(null);
   const [currentView, setCurrentViewState] = useState("home");
 
   const toggleMenu = () => {
@@ -25,7 +27,7 @@ const Navbar = ({ setCurrentView, introduceStoreRef, footerRef }) => {
 
   const handleNavigation = (view) => {
     setCurrentView(view);
-    setCurrentViewState(view); // Keep track of current view
+    setCurrentViewState(view);
     setClosing(true);
     setTimeout(() => {
       setMenuOpen(false);
@@ -42,9 +44,34 @@ const Navbar = ({ setCurrentView, introduceStoreRef, footerRef }) => {
     alert(`Searching for: ${searchQuery}`);
   };
 
+  const openBookingModal = (e) => {
+    e.preventDefault();
+    setBookingModalOpen(true);
+    setMenuOpen(false);
+  };
+
+  const closeBookingModal = () => {
+    setBookingModalOpen(false);
+  };
+
+  const handleBookingRedirect = (bookingUrl) => {
+    window.gtag("event", "conversion", {
+      send_to: "AW-16932486314/xmN0COrWpasaEKr5hIo_",
+    });
+
+    setTimeout(() => {
+      window.open(bookingUrl, "_blank", "noopener,noreferrer");
+      setBookingModalOpen(false);
+    }, 300);
+  };
+
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target) && event.target.id !== "menu-icon") {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        event.target.id !== "menu-icon"
+      ) {
         setClosing(true);
         setTimeout(() => {
           setMenuOpen(false);
@@ -64,107 +91,185 @@ const Navbar = ({ setCurrentView, introduceStoreRef, footerRef }) => {
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    const handleModalOutsideClick = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setBookingModalOpen(false);
+      }
+    };
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setBookingModalOpen(false);
+      }
+    };
+
+    if (bookingModalOpen) {
+      document.addEventListener("mousedown", handleModalOutsideClick);
+      document.addEventListener("keydown", handleEscape);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.removeEventListener("mousedown", handleModalOutsideClick);
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleModalOutsideClick);
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "auto";
+    };
+  }, [bookingModalOpen]);
+
   const handleScrollToSection = (ref, forceHomeView = false) => {
     if (forceHomeView && currentView !== "home") {
       setCurrentView("home");
-      setCurrentViewState("home"); // Update local state
+      setCurrentViewState("home");
       setTimeout(() => {
         if (ref && ref.current) {
           ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
         }
-      }, 300); // Slight delay to allow the home view to load before scrolling
+      }, 300);
     } else {
       if (ref && ref.current) {
         ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
-    setMenuOpen(false); // Close menu after clicking
+    setMenuOpen(false);
   };
 
   return (
-    <header>
-      <a href="#" className="logo" onClick={() => handleNavigation("home")}>
-        <img src={Logo} alt="Teea Nails Logo" className="logo-image" />
-        <span className="logo-text">Teea Nails</span>
-      </a>
-
-      <li>
-        <a
-          className="book-now-nav"
-          //href="https://plus-appointment.com/customer-dashboard?business_name=Momo%20Nail%20%26%20Beauty"
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={(e) => {
-            // Google Ads conversion tracking
-            window.gtag("event", "conversion", {
-              send_to: "AW-16932486314/xmN0COrWpasaEKr5hIo_",
-            });
-
-            // Small delay to ensure tracking registers before navigation
-            setTimeout(() => {
-              window.open(
-                //"https://plus-appointment.com/customer-dashboard?business_name=Momo%20Nail%20%26%20Beauty",
-                "_blank",
-                "noopener,noreferrer"
-              );
-            }, 300);
-
-            // Prevent default behavior (since we're handling navigation)
-            e.preventDefault();
-            setMenuOpen(false);
-          }}
-        >
-          BUCHEN
+    <>
+      <header>
+        <a href="#" className="logo" onClick={() => handleNavigation("home")}>
+          <img src={Logo} alt="Teea Nails Logo" className="logo-image" />
+          <span className="logo-text">Teea Nails</span>
         </a>
-      </li>
 
-      <div
-        className={`navbar-toggle ${menuOpen ? "open" : ""}`}
-        id="menu-icon"
-        onClick={toggleMenu}
-      >
-        <BsList />
-      </div>
+        <li>
+          <a
+            className="book-now-nav"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={openBookingModal}
+          >
+            BUCHEN
+          </a>
+        </li>
 
-      <ul ref={menuRef} className={`navbar ${menuOpen ? (closing ? "closing" : "open") : ""}`}>
-        <li>
-          <a href="#" onClick={(e) => { e.preventDefault(); handleNavigation("services"); }}>
-            UNSERE SERVICES
-          </a>
-        </li>
-        <li>
-          <a href="#" onClick={(e) => { e.preventDefault(); handleScrollToSection(introduceStoreRef, true); }}>
-            ÜBER UNS
-          </a>
-        </li>
-        <li>
-          <a href="#" onClick={(e) => { e.preventDefault(); handleScrollToSection(footerRef, true); }}>
-            KONTAKT
-          </a>
-        </li>
-        <li className="search-bar">
-          <form onSubmit={handleSearchClick}>
-            <div className="search-container">
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={handleSearchChange}
-                placeholder="Suchen..."
-              />
-              <button type="submit" className="search-icon">
-                <Search />
-              </button>
-            </div>
-          </form>
-        </li>
-        {/*         <li className="language">
+        <div
+          className={`navbar-toggle ${menuOpen ? "open" : ""}`}
+          id="menu-icon"
+          onClick={toggleMenu}
+        >
+          <BsList />
+        </div>
+
+        <ul
+          ref={menuRef}
+          className={`navbar ${menuOpen ? (closing ? "closing" : "open") : ""}`}
+        >
+          <li>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavigation("services");
+              }}
+            >
+              UNSERE SERVICES
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                handleScrollToSection(introduceStoreRef, true);
+              }}
+            >
+              ÜBER UNS
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                handleScrollToSection(footerRef, true);
+              }}
+            >
+              KONTAKT
+            </a>
+          </li>
+          <li className="search-bar">
+            <form onSubmit={handleSearchClick}>
+              <div className="search-container">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  placeholder="Suchen..."
+                />
+                <button type="submit" className="search-icon">
+                  <Search />
+                </button>
+              </div>
+            </form>
+          </li>
+          {/*         <li className="language">
           <select>
             <option value="de">Deutsch</option>
             <option value="en">English</option>
           </select>
         </li> */}
-      </ul>
-    </header>
+        </ul>
+      </header>
+
+      {bookingModalOpen && (
+        <div className="booking-modal-overlay">
+          <div className="booking-modal" ref={modalRef}>
+            <button className="booking-modal-close" onClick={closeBookingModal}>
+              ×
+            </button>
+
+            <h2>Wählen Sie einen Standort</h2>
+            <p className="booking-modal-subtitle">
+              Bitte wählen Sie den Salon aus, bei dem Sie Ihren Termin buchen möchten.
+            </p>
+
+            <div className="booking-location-list">
+              <button
+                className="booking-location-card"
+                onClick={() =>
+                  handleBookingRedirect(
+                    "https://plus-appointment.com/customer-dashboard?business_name=Teea%20Nails%20Millenium%20City"
+                  )
+                }
+              >
+                <h3>MILLENIUM CITY</h3>
+                <p>Handelskai 94-96/E/11, 1200 Wien</p>
+                <p>📞 Telefon: +41 79 809 39 39</p>
+                <span>Jetzt buchen</span>
+              </button>
+
+              <button
+                className="booking-location-card"
+                onClick={() =>
+                  handleBookingRedirect(
+                    "https://plus-appointment.com/customer-dashboard?business_name=Teea%20Nails%20Donau%20Zentrum"
+                  )
+                }
+              >
+                <h3>DONAU ZENTRUM</h3>
+                <p>Wagramerstrasse 94, Top Nr. 707</p>
+                <span>Jetzt buchen</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

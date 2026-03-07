@@ -1,6 +1,6 @@
 /* Footer Container */
 .custom-footer {
-  background-color: #f6f3e8;
+  background-color: #ffdfdf;
 }
 
 .footer-container {
@@ -18,19 +18,19 @@
 .footer-left {
   flex: 1;
   font-family: Arial, sans-serif;
-  color: #6b5b4b;
+  color: #000000;
   line-height: 1.8;
 }
 
 .footer-left h3 {
   font-size: 1.5rem;
-  color: #a0876a;
+  color: #6f6f6f;
   margin-bottom: 1rem;
 }
 
 .footer-left h4 {
   font-size: 1.2rem;
-  color: #a0876a;
+  color: #7c7c7c;
   margin-top: 1.5rem;
 }
 
