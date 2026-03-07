@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { BsList } from "react-icons/bs";
 import { Search } from "@mui/icons-material";
 import "../styles/Navbar.css";
-import Logo from "../assets/logo.webp"; // đổi tên file nếu file của bạn khác
+import Logo from "../assets/logo.webp";
+import BookingModal from "./BookingModal";
 
 const Navbar = ({ setCurrentView, introduceStoreRef, footerRef }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -10,7 +11,6 @@ const Navbar = ({ setCurrentView, introduceStoreRef, footerRef }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const menuRef = useRef(null);
-  const modalRef = useRef(null);
   const [currentView, setCurrentViewState] = useState("home");
 
   const toggleMenu = () => {
@@ -54,17 +54,6 @@ const Navbar = ({ setCurrentView, introduceStoreRef, footerRef }) => {
     setBookingModalOpen(false);
   };
 
-  const handleBookingRedirect = (bookingUrl) => {
-    window.gtag("event", "conversion", {
-      send_to: "AW-16932486314/xmN0COrWpasaEKr5hIo_",
-    });
-
-    setTimeout(() => {
-      window.open(bookingUrl, "_blank", "noopener,noreferrer");
-      setBookingModalOpen(false);
-    }, 300);
-  };
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -90,36 +79,6 @@ const Navbar = ({ setCurrentView, introduceStoreRef, footerRef }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [menuOpen]);
-
-  useEffect(() => {
-    const handleModalOutsideClick = (event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
-        setBookingModalOpen(false);
-      }
-    };
-
-    const handleEscape = (event) => {
-      if (event.key === "Escape") {
-        setBookingModalOpen(false);
-      }
-    };
-
-    if (bookingModalOpen) {
-      document.addEventListener("mousedown", handleModalOutsideClick);
-      document.addEventListener("keydown", handleEscape);
-      document.body.style.overflow = "hidden";
-    } else {
-      document.removeEventListener("mousedown", handleModalOutsideClick);
-      document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "auto";
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleModalOutsideClick);
-      document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "auto";
-    };
-  }, [bookingModalOpen]);
 
   const handleScrollToSection = (ref, forceHomeView = false) => {
     if (forceHomeView && currentView !== "home") {
@@ -226,49 +185,7 @@ const Navbar = ({ setCurrentView, introduceStoreRef, footerRef }) => {
         </ul>
       </header>
 
-      {bookingModalOpen && (
-        <div className="booking-modal-overlay">
-          <div className="booking-modal" ref={modalRef}>
-            <button className="booking-modal-close" onClick={closeBookingModal}>
-              ×
-            </button>
-
-            <h2>Wählen Sie einen Standort</h2>
-            <p className="booking-modal-subtitle">
-              Bitte wählen Sie den Salon aus, bei dem Sie Ihren Termin buchen möchten.
-            </p>
-
-            <div className="booking-location-list">
-              <button
-                className="booking-location-card"
-                onClick={() =>
-                  handleBookingRedirect(
-                    "https://plus-appointment.com/customer-dashboard?business_name=Teea%20Nails%20Millenium%20City"
-                  )
-                }
-              >
-                <h3>MILLENIUM CITY</h3>
-                <p>Handelskai 94-96/E/11, 1200 Wien</p>
-                <p>📞 Telefon: +41 79 809 39 39</p>
-                <span>Jetzt buchen</span>
-              </button>
-
-              <button
-                className="booking-location-card"
-                onClick={() =>
-                  handleBookingRedirect(
-                    "https://plus-appointment.com/customer-dashboard?business_name=Teea%20Nails%20Donau%20Zentrum"
-                  )
-                }
-              >
-                <h3>DONAU ZENTRUM</h3>
-                <p>Wagramerstrasse 94, Top Nr. 707</p>
-                <span>Jetzt buchen</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <BookingModal isOpen={bookingModalOpen} onClose={closeBookingModal} />
     </>
   );
 };
