@@ -139,6 +139,24 @@ header {
   display: none;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-image {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  display: block;
+}
+
+.logo-text {
+  display: inline-block;
+}
+
 @media (max-width: 768px) {
   .navbar {
     display: none;

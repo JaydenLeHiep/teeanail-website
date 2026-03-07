@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { BsList } from "react-icons/bs";
 import { Search } from "@mui/icons-material";
 import "../styles/Navbar.css";
+import Logo from "../assets/logo.webp"; // đổi tên file nếu file của bạn khác
 
 const Navbar = ({ setCurrentView, introduceStoreRef, footerRef }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -82,9 +83,11 @@ const Navbar = ({ setCurrentView, introduceStoreRef, footerRef }) => {
 
   return (
     <header>
-      <a href="#" className="logo" onClick={() => handleNavigation('home')}>
-        Momo Nail & Beauty
+      <a href="#" className="logo" onClick={() => handleNavigation("home")}>
+        <img src={Logo} alt="Teea Nails Logo" className="logo-image" />
+        <span className="logo-text">Teea Nails</span>
       </a>
+
       <li>
         <a
           className="book-now-nav"
@@ -93,8 +96,8 @@ const Navbar = ({ setCurrentView, introduceStoreRef, footerRef }) => {
           rel="noopener noreferrer"
           onClick={(e) => {
             // Google Ads conversion tracking
-            window.gtag('event', 'conversion', {
-              'send_to': 'AW-16932486314/xmN0COrWpasaEKr5hIo_'
+            window.gtag("event", "conversion", {
+              send_to: "AW-16932486314/xmN0COrWpasaEKr5hIo_",
             });
 
             // Small delay to ensure tracking registers before navigation
@@ -122,9 +125,10 @@ const Navbar = ({ setCurrentView, introduceStoreRef, footerRef }) => {
       >
         <BsList />
       </div>
+
       <ul ref={menuRef} className={`navbar ${menuOpen ? (closing ? "closing" : "open") : ""}`}>
         <li>
-          <a href="#" onClick={(e) => { e.preventDefault(); handleNavigation('services'); }}>
+          <a href="#" onClick={(e) => { e.preventDefault(); handleNavigation("services"); }}>
             UNSERE SERVICES
           </a>
         </li>
