@@ -1,0 +1,213 @@
+/* Services Page Container */
+.services-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 2rem;
+  background-color: #fdf9f3;
+}
+
+/* Services Header */
+.services-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.services-header h1 {
+  font-size: 2.5rem;
+  color: #a0876a;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+/* Title */
+.services-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #a0876a;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  position: relative;
+  margin-top: 30px;
+}
+
+/* Underline Effect */
+.services-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #a0876a;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* Price List Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 80%;
+  max-width: 1100px;
+}
+
+/* Each Category */
+.service-category {
+  background: white;
+  padding: 1.8rem;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Category Titles */
+.service-category h2 {
+  font-size: 1.5rem;
+  color: #a0876a;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 2px solid #a0876a;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Standard List */
+.service-category ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Standard List Item */
+.service-category li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 1rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px dashed #ddd;
+}
+
+.service-category li:last-child {
+  border-bottom: none;
+}
+
+.service-category li span:first-child {
+  flex: 1;
+  text-align: left;
+  color: #333;
+}
+
+.service-category li span:last-child {
+  text-align: right;
+  font-weight: bold;
+  color: #a0876a;
+  min-width: 70px;
+  white-space: nowrap;
+}
+
+/* Comparison table */
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.price-table th,
+.price-table td {
+  padding: 0.65rem 0;
+  border-bottom: 1px dashed #ddd;
+  font-size: 1rem;
+}
+
+.price-table th {
+  color: #a0876a;
+  font-weight: bold;
+  text-align: right;
+}
+
+.price-table th:first-child,
+.price-table td:first-child {
+  text-align: left;
+  color: #333;
+}
+
+.price-table td:not(:first-child) {
+  text-align: right;
+  font-weight: bold;
+  color: #a0876a;
+  white-space: nowrap;
+}
+
+/* Wimpern section full width */
+.wimpern {
+  grid-column: span 2;
+}
+
+.wimpern-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.wimpern-column ul {
+  margin-bottom: 1.5rem;
+}
+
+.wimpern-group {
+  margin-top: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .services-container {
+    padding: 2rem 1rem;
+  }
+
+  .services-header h1 {
+    font-size: 2rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .service-category {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .services-title {
+    font-size: 2rem;
+    margin-top: 45px;
+  }
+
+  .services-title::after {
+    width: 60px;
+    height: 3px;
+  }
+
+  .wimpern {
+    grid-column: span 1;
+  }
+
+  .wimpern-columns {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .price-table th,
+  .price-table td {
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+  }
+
+  .service-category li {
+    font-size: 0.95rem;
+  }
+}

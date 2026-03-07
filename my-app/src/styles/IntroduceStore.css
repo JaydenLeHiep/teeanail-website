@@ -1,0 +1,183 @@
+/* Container */
+.introduce-store-container {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items to the top */
+    gap: 2rem;
+    padding: 3rem;
+  }
+  
+/* Text Section */
+.store-text {
+    flex: 1;
+    position: relative;
+    width: 500px;
+    height: 450px;
+    background-image: url("../assets/Background.webp"); /* Set background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    color: #333;
+    border-radius: 10px;
+    z-index: 1;
+    margin-left: 100px; /* Slight overlap */
+    filter: brightness(1.03); /* Adjust brightness of the background image */
+  }
+  
+  .store-text h1 {
+    font-size: 2.5rem;
+    color: #a0876a;
+    margin-bottom: 1rem;
+    margin-right: 100px;
+  }
+  
+  .underline {
+    width: 50px;
+    height: 2px;
+    background-color: #a0876a;
+    margin-bottom: 1rem;
+    margin-right: 100px;
+  }
+  
+  .store-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #3b3b3b;
+    margin-bottom: 2rem;
+    margin-right: 100px;
+  }
+  
+  .about-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 2px solid #a0876a;
+    border-radius: 30px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 100px;
+  }
+  
+  .about-button:hover {
+    background-color: #a0876a;
+    color: #fff;
+  }
+  
+
+/* Carousel Section */
+.store-carousel {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align carousel to the left */
+    margin-top: -60px; /* Adjust height of carousel relative to text */
+    margin-left: -100px;
+    z-index: 2;
+  }
+
+  .carousel {
+    position: relative;
+    width: 500px;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  
+  .carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .dot.active {
+    background-color: #a0876a;
+  }
+
+  @media (max-width: 1030px) {
+    .introduce-store-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Fix carousel image being cut off and adjust height */
+    .store-carousel {
+        order: 1;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    .carousel {
+        width: 100%; /* Make it responsive */
+        max-width: 100%; /* Set a reasonable max width */
+        height: auto;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    .carousel-image {
+        width: 100%;
+        height: auto; /* Ensure full image is visible */
+        object-fit: contain; /* Prevent image from being cut off */
+        display: block;
+    }
+
+    /* Center the Dots */
+    .carousel-dots {
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        margin-top: 20px; /* Ensure spacing between image and dots */
+    }
+
+    /* Fix text inside store-text box not being centered */
+    .store-text {
+        order: 2;
+        width: 100%;
+        text-align: center;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    .store-text h1,
+    .store-text p,
+    .about-button {
+        text-align: center;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+
+    .about-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

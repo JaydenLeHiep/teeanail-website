@@ -1,0 +1,298 @@
+/* Footer Container */
+.custom-footer {
+  background-color: #f6f3e8;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.footer-left {
+  flex: 1;
+  font-family: Arial, sans-serif;
+  color: #6b5b4b;
+  line-height: 1.8;
+}
+
+.footer-left h3 {
+  font-size: 1.5rem;
+  color: #a0876a;
+  margin-bottom: 1rem;
+}
+
+.footer-left h4 {
+  font-size: 1.2rem;
+  color: #a0876a;
+  margin-top: 1.5rem;
+}
+
+.footer-left p {
+  font-size: 1rem;
+  margin: 0.2rem 0;
+}
+
+.footer-right {
+  flex: 1;
+}
+
+.map-switch-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.map-switch-button {
+  padding: 10px 18px;
+  border: 2px solid #a0876a;
+  border-radius: 30px;
+  background-color: transparent;
+  color: #a0876a;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.map-switch-button:hover {
+  background-color: #a0876a;
+  color: white;
+}
+
+.active-map-button {
+  background-color: #a0876a;
+  color: white;
+}
+
+.map-frame {
+  border: 1px solid #a0876a;
+  border-radius: 10px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #444;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.footer-bottom a {
+  color: #f4b45a;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
+iframe {
+  border-radius: 10px;
+}
+
+/* Mobile Version */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-left,
+  .footer-right {
+    width: 100%;
+    text-align: center;
+  }
+
+  .map-switch-buttons {
+    justify-content: center;
+  }
+
+  /* Improve Map Height */
+  .footer-right iframe {
+    width: 100%;
+    height: 300px;
+    /* Increased height for better visibility */
+  }
+
+  /* Adjust footer text spacing */
+  .footer-bottom {
+    padding: 20px;
+  }
+
+  .footer-bottom p {
+    padding: 10px;
+    /* Add space to prevent text from touching edges */
+  }
+}
+
+/*Bewertungen*/
+
+/* Container spacing */
+.footer-google-reviews {
+  padding: 2rem 1rem;
+  background-color: #f9f7f0;
+}
+
+/* Slider cards */
+.review-slide {
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 10px;
+}
+
+.slick-slide>div {
+  height: 100%;
+}
+
+.review-card {
+  background: white;
+  padding: 1.5rem;
+  margin: 0 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 280px;
+  box-sizing: border-box;
+}
+
+/* Author section */
+.review-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+/* Avatar image */
+.review-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 0.75rem;
+  background-color: #eee;
+}
+
+/* Author name */
+.review-author {
+  font-weight: bold;
+  margin: 0;
+}
+
+.review-time {
+  font-size: 0.85rem;
+  color: #888;
+  margin: 0.1rem 0 0;
+}
+
+/* Stars */
+.review-stars {
+  color: #FFD700;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Text body */
+.review-text {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #333;
+  margin-top: 0.5rem;
+  max-height: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  display: box;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-line-clamp: 10;
+  line-clamp: 10;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.review-text.expanded {
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+  max-height: none;
+  overflow: visible;
+}
+
+/* Title */
+.review-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.google-review-summary {
+  background: #ffffff;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.summary-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.google-logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #4285F4;
+  margin-right: 0.25rem;
+}
+
+.review-label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.rating-stars {
+  margin-top: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.stars {
+  color: #FFD700;
+  font-size: 1.1rem;
+}
+
+.total-reviews {
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.google-review-button {
+  background-color: #4285F4;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background-color 0.3s ease;
+}
+
+.google-review-button:hover {
+  background-color: #3367d6;
+}

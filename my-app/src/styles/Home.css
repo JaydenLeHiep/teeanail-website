@@ -1,0 +1,227 @@
+/* Home Container */
+.home-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 2rem 0;
+  margin-bottom: 70px;
+  margin-top: 58px;
+}
+
+/* Background Image */
+.home-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('..//assets/BackgroundHome.webp'); 
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  filter: brightness(1.1);
+}
+
+/* Content Section */
+.home-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  gap: 3rem;
+}
+
+/* Left Side */
+.home-left {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.home-image {
+  width: 400px;
+  height: 575px;
+  object-fit: cover;
+}
+
+/* Right Side */
+.home-right {
+  flex: 1;
+  color: #333;
+  text-align: left;
+  padding-left: 2rem;
+}
+
+.home-right h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+.home-right p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #000000;
+  margin-bottom: 2rem;
+}
+
+/* ✅ Two-column grid layout */
+.home-action-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* ✅ Each Column */
+.home-action-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Buttons */
+.home-button {
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: 2px solid #696969;
+  border-radius: 30px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.home-button:hover {
+  background-color: #787878;
+  color: #fff;
+}
+
+/* ✅ "Book Now" special styling */
+.book-now {
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: 2px solid #717171;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  background-color: #f38686;
+  color: white;
+  box-shadow: 0px 4px 10px rgba(160, 135, 106, 0.5);
+}
+
+.book-now:hover {
+  background-color: #ffa6a6;
+  transform: scale(1.05);
+  box-shadow: 0px 6px 15px rgba(160, 135, 106, 0.6);
+}
+
+/* Contact Section */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.contact-item p {
+  font-size: 0.85rem;
+  color: #7b7b7b;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.contact-item strong {
+  font-size: 1rem;
+  color: #7b7b7b;
+}
+
+.contact-icon {
+  font-size: 2rem;
+  color: #7b7b7b;
+}
+
+/* ✅ Mobile Responsive */
+@media (max-width: 980px) {
+  .home-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .home-left {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .home-image {
+    width: 85%;
+    max-width: 450px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .home-right {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .home-right h1,
+  .home-right p {
+    text-align: center;
+  }
+
+  /* ✅ Center the two-column layout properly */
+  .home-action-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto; 
+  }
+
+  /* ✅ Each column keeps its structure */
+  .home-action-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 1.2rem;
+  }
+
+  /* ✅ Ensure buttons & contact sections are aligned */
+  .home-button, .book-now {
+    width: 100%;
+    max-width: 200px; /* Prevents inconsistency */
+    text-align: center;
+  }
+
+  /* ✅ Contact sections remain below their buttons */
+  .contact-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .contact-icon {
+    font-size: 2rem;
+  }
+}
