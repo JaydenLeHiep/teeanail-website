@@ -70,7 +70,6 @@ const BookingModal = ({ isOpen, onClose }) => {
           >
             <h3>MILLENIUM CITY</h3>
             <p>Handelskai 94-96/E/11, 1200 Wien</p>
-            <p>📞 Telefon: +41 79 809 39 39</p>
             <span>Jetzt buchen</span>
           </button>
 

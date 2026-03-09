@@ -8,7 +8,7 @@ import BookingModal from "./BookingModal";
 const Navbar = ({ setCurrentView, introduceStoreRef, footerRef }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [closing, setClosing] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  // const [searchQuery, setSearchQuery] = useState("");
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const menuRef = useRef(null);
   const [currentView, setCurrentViewState] = useState("home");
@@ -35,14 +35,14 @@ const Navbar = ({ setCurrentView, introduceStoreRef, footerRef }) => {
     }, 300);
   };
 
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
+  // const handleSearchChange = (e) => {
+  //   setSearchQuery(e.target.value);
+  // };
 
-  const handleSearchClick = (e) => {
-    e.preventDefault();
-    alert(`Searching for: ${searchQuery}`);
-  };
+  // const handleSearchClick = (e) => {
+  //   e.preventDefault();
+  //   alert(`Searching for: ${searchQuery}`);
+  // };
 
   const openBookingModal = (e) => {
     e.preventDefault();
@@ -161,7 +161,7 @@ const Navbar = ({ setCurrentView, introduceStoreRef, footerRef }) => {
               KONTAKT
             </a>
           </li>
-          <li className="search-bar">
+          {/* <li className="search-bar">
             <form onSubmit={handleSearchClick}>
               <div className="search-container">
                 <input
@@ -175,7 +175,7 @@ const Navbar = ({ setCurrentView, introduceStoreRef, footerRef }) => {
                 </button>
               </div>
             </form>
-          </li>
+          </li> */}
           {/*         <li className="language">
           <select>
             <option value="de">Deutsch</option>
