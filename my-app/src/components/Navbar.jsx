@@ -102,7 +102,7 @@ const Navbar = ({ setCurrentView, introduceStoreRef, footerRef }) => {
       <header>
         <a href="#" className="logo" onClick={() => handleNavigation("home")}>
           <img src={Logo} alt="Teea Nails Logo" className="logo-image" />
-          <span className="logo-text">Teea Nails</span>
+          <span className="logo-text">TeeA Nails</span>
         </a>
 
         <li>
