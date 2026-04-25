@@ -5,6 +5,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
+import instagramQr from "../assets/qr_teeanail_ins.png";
+import facebookQr from "../assets/qr_teenails_fb.png";
 
 const Footer = forwardRef((props, ref) => {
   const [reviews, setReviews] = useState([]);
@@ -131,36 +133,44 @@ const Footer = forwardRef((props, ref) => {
           <p>🏠 Adresse 1: MILLENIUM CITY, Handelskai 94-96/E/11, 1200 Wien</p>
           <p>📞 Telefon: +41 79 809 39 39</p>
           <hr />
-          <p>🏠 Adresse 2: DONAU ZENTRUM, Wagramerstrasse 94, Top Nr. 707</p>
-          <p>
-            <FontAwesomeIcon icon={faInstagram} style={{ marginRight: "8px" }} />
-            Instagram:
-            <strong>
-              <a
-                href="https://www.instagram.com/teea.nails.wien/"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ textDecoration: "none", color: "inherit", marginLeft: "5px" }}
-              >
-                @teea.nails.wien
-              </a>
-            </strong>
-          </p>
+          <p>🏠 Adresse 2 <strong>(COMING SOON)</strong>: DONAU ZENTRUM, Wagramerstrasse 94, Top Nr. 707 </p>
+          <div className="social-qr-row">
+            <a
+              href="https://www.instagram.com/teea.nails.wien/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon-link"
+            >
+              <FontAwesomeIcon icon={faInstagram} />
+            </a>
 
-          <p>
-            <FontAwesomeIcon icon={faFacebook} style={{ marginRight: "8px" }} />
-            Facebook:
-            <strong>
-              <a
-                href="https://www.facebook.com/profile.php?id=61582801566346"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ textDecoration: "none", color: "inherit", marginLeft: "5px" }}
-              >
-                TeeA Nails
-              </a>
-            </strong>
-          </p>
+            <div>
+              <img
+                src={instagramQr}
+                alt="Instagram QR Code"
+                className="social-qr"
+              />
+            </div>
+          </div>
+
+          <div className="social-qr-row">
+            <a
+              href="https://www.facebook.com/profile.php?id=61582801566346"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon-link"
+            >
+              <FontAwesomeIcon icon={faFacebook} />
+            </a>
+
+            <div>
+              <img
+                src={facebookQr}
+                alt="Facebook QR Code"
+                className="social-qr"
+              />
+            </div>
+          </div>
         </div>
 
         <div className="footer-right">
@@ -194,7 +204,7 @@ const Footer = forwardRef((props, ref) => {
 
       <div className="footer-bottom">
         <p>
-          Copyright Teea Nails 2026 &nbsp;&nbsp; | &nbsp;&nbsp;
+          Copyright TeeA Nails 2026 &nbsp;&nbsp; | &nbsp;&nbsp;
           <a href="#privacy-policy">privacy policy</a> &nbsp;&nbsp; | &nbsp;&nbsp;
           <a href="#terms-conditions">AGB - General Terms and Conditions</a>
         </p>
