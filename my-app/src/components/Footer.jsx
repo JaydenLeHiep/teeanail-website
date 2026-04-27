@@ -125,8 +125,8 @@ const Footer = forwardRef((props, ref) => {
         <div className="footer-left">
           <h3>TEEA NAILS</h3>
           <h4>Öffnungszeiten</h4>
-          <p>Montag bis Freitag: 9:00 - 19:00 Uhr</p>
-          <p>Samstag: 9:00 - 17:00 Uhr</p>
+          <p>Montag bis Freitag: 9:00 - 20:00 Uhr</p>
+          <p>Samstag: 9:00 - 18:00 Uhr</p>
           <h4>Kontakt</h4>
           <p>🏠 Adresse 1: MILLENIUM CITY, Handelskai 94-96/E/11, 1200 Wien</p>
           <p>📞 Telefon: +41 79 809 39 39</p>
