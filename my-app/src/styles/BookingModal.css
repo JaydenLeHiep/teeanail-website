@@ -93,6 +93,50 @@
   color: #a0876a;
 }
 
+.booking-location-card-disabled {
+  position: relative;
+  cursor: not-allowed;
+  opacity: 0.72;
+  filter: grayscale(20%);
+  overflow: hidden;
+}
+
+.booking-location-card-disabled:hover {
+  transform: none;
+  border-color: #e3d4c3;
+  box-shadow: none;
+}
+
+.booking-location-card-disabled::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(254, 235, 235, 0.55);
+  backdrop-filter: blur(1.5px);
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+.booking-location-card-disabled h3,
+.booking-location-card-disabled p,
+.booking-location-card-disabled span {
+  filter: blur(0.8px);
+}
+
+.coming-soon-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  background: #7a2e4d;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.3px;
+}
+
 @keyframes bookingModalFadeIn {
   from {
     opacity: 0;

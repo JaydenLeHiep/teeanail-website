@@ -5,14 +5,14 @@ const BookingModal = ({ isOpen, onClose }) => {
   const modalRef = useRef(null);
 
   const handleBookingRedirect = (bookingUrl) => {
-    window.gtag("event", "conversion", {
-      send_to: "AW-16932486314/xmN0COrWpasaEKr5hIo_",
-    });
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "conversion", {
+        send_to: "AW-16932486314/xmN0COrWpasaEKr5hIo_",
+      });
+    }
 
-    setTimeout(() => {
-      window.open(bookingUrl, "_blank", "noopener,noreferrer");
-      onClose();
-    }, 300);
+    window.open(bookingUrl, "_blank", "noopener,noreferrer");
+    onClose();
   };
 
   useEffect(() => {
@@ -64,7 +64,7 @@ const BookingModal = ({ isOpen, onClose }) => {
             className="booking-location-card"
             onClick={() =>
               handleBookingRedirect(
-                "https://plus-appointment.com/customer-dashboard?business_name=Teea%20Nails%20Millenium%20City"
+                "https://plus-appointment.com/customer-dashboard?business_name=TeeA%20Nails%20Millenium%20City"
               )
             }
           >
@@ -74,13 +74,11 @@ const BookingModal = ({ isOpen, onClose }) => {
           </button>
 
           <button
-            className="booking-location-card"
-            onClick={() =>
-              handleBookingRedirect(
-                "https://plus-appointment.com/customer-dashboard?business_name=Teea%20Nails%20Donau%20Zentrum"
-              )
-            }
+            className="booking-location-card booking-location-card-disabled"
+            disabled
           >
+            <div className="coming-soon-badge">Coming soon</div>
+
             <h3>DONAU ZENTRUM</h3>
             <p>Wagramerstrasse 94, Top Nr. 707</p>
             <span>Jetzt buchen</span>
