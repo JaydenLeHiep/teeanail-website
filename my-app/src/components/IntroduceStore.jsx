@@ -20,8 +20,8 @@ const IntroduceStore = React.forwardRef((props, ref) => {
                 <h1>Luxuriöses Ambiente, ein großzügiger</h1>
                 <div className="underline"></div>
                 <p>
-                    Bei Our Nails & Beauty sorgen wir dafür, dass sich jeder Besuch besonders anfühlt. 
-                    Ob Erstbesuch oder langjährige Stammkundschaft – wir bieten Ihnen exzellenten Service, 
+                    Bei TeeA Nails sorgen wir dafür, dass sich jeder Besuch besonders anfühlt.
+                    Ob Erstbesuch oder langjährige Stammkundschaft – wir bieten Ihnen exzellenten Service,
                     hochwertige Pflege und ein rundum verwöhnendes Erlebnis.
                 </p>
                 <button className="about-button">ÜBER UNS</button>

@@ -131,9 +131,10 @@ const Footer = forwardRef((props, ref) => {
           <p>Samstag: 9:00 - 18:00 Uhr</p>
           <h4>Kontakt</h4>
           <p>🏠 Adresse 1: MILLENIUM CITY, Handelskai 94-96/E/11, 1200 Wien</p>
-          <p>📞 Telefon: +41 79 809 39 39</p>
+          <p>📞 Telefon: +43 681 843 13928</p>
           <hr />
-          <p>🏠 Adresse 2 <strong>(COMING SOON)</strong>: DONAU ZENTRUM, Wagramerstrasse 94, Top Nr. 707 </p>
+          <p>🏠 Adresse 2: DONAU ZENTRUM, Wagramerstrasse 94, Top Nr. 707 </p>
+          <p>📞 Telefon: +43 676 502 2391</p>
           <div className="social-qr-row">
             <a
               href="https://www.instagram.com/teea.nails.wien/"

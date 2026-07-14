@@ -74,10 +74,13 @@ const BookingModal = ({ isOpen, onClose }) => {
           </button>
 
           <button
-            className="booking-location-card booking-location-card-disabled"
-            disabled
+            className="booking-location-card"
+            onClick={() =>
+              handleBookingRedirect(
+                "https://plus-appointment.com/customer-dashboard?business_name=TeeA%20Nails%20Donau%20Zentrum"
+              )
+            }
           >
-            <div className="coming-soon-badge">Coming soon</div>
 
             <h3>DONAU ZENTRUM</h3>
             <p>Wagramerstrasse 94, Top Nr. 707</p>
